@@ -1,14 +1,7 @@
-
----
-
-### Step 4: Create Blog Index Page
-
-**File:** `blog.html` (Root mein)
-
-```html
 ---
 layout: default
 title: Security Blog | Ashad Ali
+permalink: /blog/
 ---
 
 <!DOCTYPE html>
@@ -23,42 +16,67 @@ title: Security Blog | Ashad Ali
     <style>
         body { font-family: 'Inter', sans-serif; background: #0f172a; color: #cbd5e1; }
         .text-gradient { background: linear-gradient(to right, #22d3ee, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased bg-primary">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="font-mono text-xl font-bold text-white">&lt;Ashad /&gt;</a>
-            <div class="space-x-6">
-                <a href="/" class="text-slate-400 hover:text-white">Home</a>
-                <a href="/blog.html" class="text-accent">Blog</a>
-                <a href="/#contact" class="text-slate-400 hover:text-white">Contact</a>
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="font-mono text-xl font-bold text-white tracking-tighter">&lt;Ashad /&gt;</a>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="/#about" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="/#skills" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                        <a href="/blog/" class="text-accent px-3 py-2 rounded-md text-sm font-bold">Blog</a>
+                        <a href="/#contact" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden md:hidden glass border-t border-gray-700" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="/#skills" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="/blog/" class="text-accent block px-3 py-2 rounded-md text-base font-bold">Blog</a>
+                <a href="/#contact" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Blog Header -->
-    <header class="pt-32 pb-12 px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Security <span class="text-gradient">Blog</span></h1>
-        <p class="text-slate-400 max-w-2xl mx-auto">Technical deep-dives on Application Security, Kubernetes, DevSecOps, and Bug Bounty hunting.</p>
+    <header class="pt-32 pb-12 px-4 text-center relative overflow-hidden">
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
         
-        <!-- Search -->
-        <div class="max-w-md mx-auto mt-8">
-            <div class="relative">
-                <input type="text" id="search" placeholder="Search articles..." 
-                       class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 pl-10 text-white focus:outline-none focus:border-accent">
-                <i class="fas fa-search absolute left-3 top-3.5 text-slate-500"></i>
+        <div class="relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Security <span class="text-gradient">Blog</span></h1>
+            <p class="text-slate-400 max-w-2xl mx-auto">Technical deep-dives on Application Security, Kubernetes, DevSecOps, and Bug Bounty hunting.</p>
+            
+            <!-- Search -->
+            <div class="max-w-md mx-auto mt-8">
+                <div class="relative">
+                    <input type="text" id="search" placeholder="Search articles..." 
+                           class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 pl-10 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent">
+                    <i class="fas fa-search absolute left-3 top-3.5 text-slate-500"></i>
+                </div>
             </div>
-        </div>
-        
-        <!-- Tags -->
-        <div class="flex flex-wrap justify-center gap-2 mt-6">
-            <span class="px-3 py-1 bg-slate-800 text-accent text-sm rounded-full border border-slate-700 cursor-pointer hover:bg-slate-700">#kubernetes</span>
-            <span class="px-3 py-1 bg-slate-800 text-accent text-sm rounded-full border border-slate-700 cursor-pointer hover:bg-slate-700">#bug-bounty</span>
-            <span class="px-3 py-1 bg-slate-800 text-accent text-sm rounded-full border border-slate-700 cursor-pointer hover:bg-slate-700">#devsecops</span>
-            <span class="px-3 py-1 bg-slate-800 text-accent text-sm rounded-full border border-slate-700 cursor-pointer hover:bg-slate-700">#cloud-security</span>
+            
+            <!-- Tags -->
+            <div class="flex flex-wrap justify-center gap-2 mt-6">
+                <span class="px-3 py-1 bg-slate-800 text-accent text-sm rounded-full border border-slate-700 cursor-pointer hover:bg-slate-700 transition-colors">#docker</span>
+                <span class="px-3 py-1 bg-slate-800 text-accent text-sm rounded-full border border-slate-700 cursor-pointer hover:bg-slate-700 transition-colors">#kubernetes</span>
+                <span class="px-3 py-1 bg-slate-800 text-accent text-sm rounded-full border border-slate-700 cursor-pointer hover:bg-slate-700 transition-colors">#bug-bounty</span>
+                <span class="px-3 py-1 bg-slate-800 text-accent text-sm rounded-full border border-slate-700 cursor-pointer hover:bg-slate-700 transition-colors">#devsecops</span>
+                <span class="px-3 py-1 bg-slate-800 text-accent text-sm rounded-full border border-slate-700 cursor-pointer hover:bg-slate-700 transition-colors">#cloud-security</span>
+            </div>
         </div>
     </header>
 
@@ -66,129 +84,127 @@ title: Security Blog | Ashad Ali
     <main class="max-w-6xl mx-auto px-4 pb-20">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="articles">
             
-            <!-- Article 1 -->
-            <article class="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all group">
-                <div class="h-48 bg-gradient-to-br from-blue-900 to-slate-900 relative">
+            <!-- Article 1: Docker Security -->
+            <article class="bg-secondary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300 group">
+                <div class="h-48 bg-gradient-to-br from-blue-900 to-slate-900 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-900 to-slate-900 opacity-80"></div>
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <i class="fas fa-dharmachakra text-6xl text-blue-400 opacity-30"></i>
+                        <i class="fab fa-docker text-6xl text-cyan-400 opacity-50 group-hover:scale-110 transition-transform duration-500"></i>
                     </div>
                     <div class="absolute top-4 left-4">
-                        <span class="px-3 py-1 bg-accent/20 text-accent text-xs rounded-full font-mono">KUBERNETES</span>
+                        <span class="px-3 py-1 bg-accent/20 text-accent text-xs rounded-full font-mono border border-accent/30">DEVSECOPS</span>
                     </div>
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
-                        <span>Jan 15, 2025</span>
+                        <span><i class="far fa-calendar-alt mr-1"></i> Nov 23, 2025</span>
                         <span>•</span>
-                        <span>8 min read</span>
+                        <span><i class="far fa-clock mr-1"></i> 15 min read</span>
                     </div>
                     <h2 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                        <a href="/2025/01/15/kubernetes-security-mistakes.html">Top 10 Kubernetes Security Mistakes</a>
+                        <a href="/docker-security/">Securing Docker Containers — Practical Hands-On Guide</a>
                     </h2>
-                    <p class="text-slate-400 text-sm mb-4">Common K8s misconfigurations that lead to container escapes and cluster compromise.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-slate-500">#devsecops</span>
-                        <span class="text-xs text-slate-500">#cloud-security</span>
+                    <p class="text-slate-400 text-sm mb-4">Production-grade techniques: non-root users, Docker Content Trust, Docker Scout, capability limiting, and read-only filesystems.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs text-slate-500">#docker</span>
+                        <span class="text-xs text-slate-500">#security</span>
+                        <span class="text-xs text-slate-500">#hardening</span>
                     </div>
+                    <a href="/docker-security/" class="inline-flex items-center text-accent hover:text-white font-semibold text-sm">
+                        Read Article <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
             </article>
 
-            <!-- Article 2 -->
-            <article class="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all group">
-                <div class="h-48 bg-gradient-to-br from-red-900 to-slate-900 relative">
+            <!-- Article 2: Kubernetes -->
+            <article class="bg-secondary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300 group">
+                <div class="h-48 bg-gradient-to-br from-blue-900 to-slate-900 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-900 to-slate-900 opacity-80"></div>
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <i class="fas fa-bug text-6xl text-red-400 opacity-30"></i>
+                        <i class="fas fa-dharmachakra text-6xl text-blue-400 opacity-50 group-hover:scale-110 transition-transform duration-500"></i>
                     </div>
                     <div class="absolute top-4 left-4">
-                        <span class="px-3 py-1 bg-red-500/20 text-red-400 text-xs rounded-full font-mono">BUG BOUNTY</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full font-mono border border-blue-500/30">KUBERNETES</span>
                     </div>
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
-                        <span>Jan 20, 2025</span>
+                        <span><i class="far fa-calendar-alt mr-1"></i> Jan 15, 2025</span>
                         <span>•</span>
-                        <span>12 min read</span>
+                        <span><i class="far fa-clock mr-1"></i> 12 min read</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                        <a href="#">Top 10 Kubernetes Security Mistakes</a>
+                    </h2>
+                    <p class="text-slate-400 text-sm mb-4">Common K8s misconfigurations that lead to container escapes and cluster compromise.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs text-slate-500">#kubernetes</span>
+                        <span class="text-xs text-slate-500">#cloud-security</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-accent hover:text-white font-semibold text-sm">
+                        Read Article <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Article 3: Bug Bounty -->
+            <article class="bg-secondary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300 group">
+                <div class="h-48 bg-gradient-to-br from-red-900 to-slate-900 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-900 to-slate-900 opacity-80"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-bug text-6xl text-red-400 opacity-50 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="px-3 py-1 bg-red-500/20 text-red-400 text-xs rounded-full font-mono border border-red-500/30">BUG BOUNTY</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
+                        <span><i class="far fa-calendar-alt mr-1"></i> Jan 20, 2025</span>
+                        <span>•</span>
+                        <span><i class="far fa-clock mr-1"></i> 10 min read</span>
                     </div>
                     <h2 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
                         <a href="#">Advanced Reconnaissance Techniques</a>
                     </h2>
                     <p class="text-slate-400 text-sm mb-4">How I find hidden assets using Amass, Nuclei, and custom automation scripts.</p>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-2 mb-4">
                         <span class="text-xs text-slate-500">#recon</span>
                         <span class="text-xs text-slate-500">#automation</span>
                     </div>
+                    <a href="#" class="inline-flex items-center text-accent hover:text-white font-semibold text-sm">
+                        Read Article <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
             </article>
 
-            <!-- Article 3 -->
-            <article class="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all group">
-                <div class="h-48 bg-gradient-to-br from-green-900 to-slate-900 relative">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <i class="fas fa-shield-alt text-6xl text-green-400 opacity-30"></i>
-                    </div>
-                    <div class="absolute top-4 left-4">
-                        <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-mono">DEVSECOPS</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
-                        <span>Feb 01, 2025</span>
-                        <span>•</span>
-                        <span>10 min read</span>
-                    </div>
-                    <h2 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                        <a href="#">Building AI-Powered Security Scanners</a>
-                    </h2>
-                    <p class="text-slate-400 text-sm mb-4">Using LangChain and Nuclei to reduce false positives in vulnerability scanning.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-slate-500">#ai</span>
-                        <span class="text-xs text-slate-500">#nuclei</span>
-                    </div>
-                </div>
-            </article>
-
-        </div>
-
-        <!-- Pagination -->
-        <div class="flex justify-center mt-12 gap-2">
-            <span class="w-10 h-10 rounded-lg bg-accent text-primary font-bold flex items-center justify-center">1</span>
-            <a href="#" class="w-10 h-10 rounded-lg bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700">2</a>
-            <a href="#" class="w-10 h-10 rounded-lg bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700">3</a>
-            <a href="#" class="w-10 h-10 rounded-lg bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700"><i class="fas fa-chevron-right"></i></a>
         </div>
     </main>
 
-    <!-- Newsletter -->
-    <section class="max-w-2xl mx-auto px-4 pb-20">
-        <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 text-center">
-            <h3 class="text-2xl font-bold text-white mb-2">Subscribe to Updates</h3>
-            <p class="text-slate-400 mb-6">Get weekly security tips and new articles delivered to your inbox.</p>
-            <form class="flex flex-col sm:flex-row gap-3">
-                <input type="email" placeholder="your@email.com" class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent">
-                <button type="submit" class="px-6 py-3 bg-accent text-primary font-bold rounded-lg hover:bg-cyan-300 transition-colors">
-                    Subscribe
-                </button>
-            </form>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-8">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <p class="text-slate-500">&copy; 2025 Ashad Ali. All rights reserved.</p>
+    <footer class="bg-secondary border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="font-mono text-lg font-bold text-white">&lt;Ashad /&gt;</span>
+                <span class="text-slate-500 text-sm ml-2">© 2025 All rights reserved.</span>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://github.com/ashhadali10" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/ashhadali10/" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="https://medium.com/@ashadali" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-medium text-xl"></i></a>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Simple search filter
+        // Search functionality
         document.getElementById('search').addEventListener('input', function(e) {
             const term = e.target.value.toLowerCase();
-            document.querySelectorAll('article').forEach(article => {
+            document.querySelectorAll('#articles article').forEach(article => {
                 const text = article.innerText.toLowerCase();
                 article.style.display = text.includes(term) ? 'block' : 'none';
             });
         });
     </script>
-
 </body>
 </html>
