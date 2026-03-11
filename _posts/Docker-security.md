@@ -1,29 +1,17 @@
-Here is your complete Medium article converted to **Jekyll-ready Markdown format**. You can copy this entire code block and paste it into a single file.
-
----
-
-## 📄 Create This File
-
-**File Name:** `_posts/2025-11-23-securing-docker-containers.md`
-
-**Copy everything below this line and paste into the file:**
-
 ```markdown
 ---
-layout: default
 title: "Securing Docker Containers — Practical Hands-On Guide"
 date: 2025-11-23
 tags: [docker, security, devsecops, containers, hardening]
-reading_time: 11
 ---
 
-# Securing Docker Containers — Practical Hands-On Guide
+Securing Docker Containers — Practical Hands-On Guide
 
 **Learn production-grade techniques to secure Docker containers:** non-root users, Docker Content Trust, Docker Scout scanning, capability limiting, read-only filesystems, and a full hardened compose example.
 
 ---
 
-## Hook — A Hard Truth Every Senior Engineer Knows
+Hook — A Hard Truth Every Senior Engineer Knows
 
 If a container in your fleet is running as root, it's not a "sandbox" — it's a live bridge to the host. In real incidents, attackers have used unscanned images, writable containers, or excessive Linux capabilities to escalate from an app process to host compromise.
 
@@ -31,7 +19,7 @@ This lab-based guide converts hands-on lab experience into a mentor-style articl
 
 ---
 
-## Table of Contents
+Table of Contents
 
 1. [Objectives & Prerequisites](#objectives--prerequisites)
 2. [Lab Environment Overview](#lab-environment-overview)
@@ -47,7 +35,7 @@ This lab-based guide converts hands-on lab experience into a mentor-style articl
 
 ---
 
-## Objectives & Prerequisites
+ Objectives & Prerequisites
 
 ### What You'll Achieve
 
