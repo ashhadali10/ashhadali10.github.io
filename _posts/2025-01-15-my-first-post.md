@@ -1,8 +1,13 @@
 ```markdown
 ---
+---
 title: "Securing Docker Containers — Practical Hands-On Guide"
-date: 2025-11-23
-tags: [docker, security, devsecops, containers, hardening]
+permalink: /docker-security/
+---
+
+Securing Docker Containers — Practical Hands-On Guide
+
+**Learn production-grade techniques to secure Docker containers:** non-root users, Docker Content Trust, Docker Scout scanning, capability limiting, read-only filesystems, and a full hardened compose example.
 ---
 
 Securing Docker Containers — Practical Hands-On Guide
@@ -18,6 +23,87 @@ If a container in your fleet is running as root, it's not a "sandbox" — it's a
 This lab-based guide converts hands-on lab experience into a mentor-style article you can use in production. No fluff — just step-by-step explanation, why each step matters, how it works, and copy-paste commands you can run locally or in a lab environment.
 
 ---
+---
+title: "Securing Docker Containers — Practical Hands-On Guide"
+permalink: /docker-security/
+---
+
+Securing Docker Containers — Practical Hands-On Guide
+
+**Learn production-grade techniques to secure Docker containers:** non-root users, Docker Content Trust, Docker Scout scanning, capability limiting, read-only filesystems, and a full hardened compose example.
+
+---
+
+Hook — A Hard Truth Every Senior Engineer Knows
+
+If a container in your fleet is running as root, it's not a "sandbox" — it's a live bridge to the host. In real incidents, attackers have used unscanned images, writable containers, or excessive Linux capabilities to escalate from an app process to host compromise.
+
+This lab-based guide converts hands-on lab experience into a mentor-style article you can use in production. No fluff — just step-by-step explanation, why each step matters, how it works, and copy-paste commands you can run locally or in a lab environment.
+
+---
+
+Table of Contents
+
+1. [Objectives & Prerequisites](#objectives--prerequisites)
+2. [Lab Environment Overview](#lab-environment-overview)
+3. [Task 1 — Run Containers as Non-Root Users](#task-1--run-containers-as-non-root-users)
+4. [Task 2 — Docker Content Trust](#task-2--docker-content-trust)
+5. [Task 3 — Security Scanning with Docker Scout](#task-3--security-scanning-with-docker-scout)
+6. [Task 4 — Limit Container Privileges](#task-4--limit-container-privileges)
+7. [Task 5 — Read-Only Filesystems](#task-5--read-only-filesystems)
+8. [Task 6 — Comprehensive Secure Docker Compose](#task-6--comprehensive-secure-docker-compose)
+9. [Troubleshooting & Common Mistakes](#troubleshooting--common-mistakes)
+10. [Lab Cleanup](#lab-cleanup)
+11. [Key Takeaways & Next Steps](#key-takeaways--next-steps)
+
+---
+
+Objectives & Prerequisites
+
+### What You'll Achieve
+
+By the end of this article you will be able to:
+
+- Implement Docker security best practices for containerized apps
+- Run containers as non-root users using `USER` in Dockerfile
+- Set up Docker Content Trust and sign images
+- Use Docker Scout to scan images for CVEs and compare bases
+- Limit container privileges by dropping capabilities and applying security options
+- Make containers read-only and use tmpfs for writable runtime storage
+- Combine all controls in a production-grade docker-compose deployment
+
+### Prerequisites
+
+- Basic Docker knowledge (images, containers, Dockerfile)
+- Linux CLI familiarity
+- Understanding of user permissions and filesystems in Linux
+
+### Lab Environment
+
+The lab assumes a preconfigured Linux VM (Ubuntu 20.04) with Docker and Docker Compose available. You can run everything on a local machine, VM, or cloud lab.
+
+---
+
+Troubleshooting & Common Mistakes
+
+| Mistake | Fix |
+|---------|-----|
+| Forgetting chown → app files owned by root cause permission errors | `chown -R appuser:appuser /app` before `USER` |
+| Using USER but still exposing privileged ports (&lt;1024) without CAP | Use non-root ports (e.g., 8080) or add minimal capability `NET_BIND_SERVICE` only |
+
+---
+
+Task 2 — Implement Docker Content Trust
+
+### What It Is
+
+Docker Content Trust (DCT) uses cryptographic signatures (Notary) to ensure image integrity and authenticity.
+
+### Why It Matters
+
+Prevents pulling tampered or malicious images — essential for supply-chain security and compliance.
+
+**Analogy:** DCT is a tamper-evident seal on a package: if it's broken, you don't accept the package.
 
 Table of Contents
 
