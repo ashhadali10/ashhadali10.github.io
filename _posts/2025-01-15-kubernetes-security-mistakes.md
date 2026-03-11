@@ -25,3 +25,24 @@ spec:
   containers:
   - name: app
     image: nginx
+kubectl get pods --all-namespaces -o json | \
+  jq '.items[] | select(.spec.containers[].securityContext.privileged==true) | .metadata.name'
+
+env:
+- name: DATABASE_PASSWORD
+  value: "supersecret123"
+
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "100m"
+  limits:
+    memory: "256Mi"
+    cpu: "200m"
+
+
+Conclusion
+Securing Kubernetes requires defense in depth. Start with these 10 fixes, then implement continuous scanning with tools like Trivy, Kube-bench, and Falco for runtime protection.
+What's your biggest Kubernetes security challenge? Let me know in the comments or reach out on Twitter.
+
+Want more DevSecOps content? Subscribe to my blog or check out my Kubernetes security scanner project.
