@@ -1,0 +1,455 @@
+---
+layout: default
+title: Read Articles | Ashad Ali
+permalink: /read/
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Articles | Ashad Ali</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', sans-serif],
+                        mono: ['JetBrains Mono', monospace],
+                    },
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#22d3ee',
+                        success: '#34d399',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: #cbd5e1; }
+        .text-gradient { background: linear-gradient(to right, #22d3ee, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        
+        .article-card {
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px -10px rgba(34, 211, 238, 0.3);
+            border-color: #22d3ee;
+        }
+    </style>
+</head>
+<body class="antialiased bg-primary min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="font-mono text-xl font-bold text-white tracking-tighter">&lt;Ashad /&gt;</a>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="/" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="/read/" class="text-accent px-3 py-2 rounded-md text-sm font-bold">Read</a>
+                        <a href="/#about" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="/#contact" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden md:hidden glass border-t border-gray-700" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="/read/" class="text-accent block px-3 py-2 rounded-md text-base font-bold">Read</a>
+                <a href="/#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-12 px-4 text-center relative overflow-hidden">
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="inline-block px-3 py-1 mb-4 text-xs font-mono font-semibold tracking-wider text-accent uppercase bg-slate-800 rounded-full border border-slate-700">
+                <i class="fas fa-book mr-1"></i> Knowledge Base
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Security <span class="text-gradient">Articles</span></h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-lg">Technical deep-dives, hands-on labs, and security research. Learn Docker hardening, Kubernetes security, Bug Bounty techniques, and DevSecOps practices.</p>
+            
+            <!-- Search -->
+            <div class="max-w-md mx-auto mt-8">
+                <div class="relative">
+                    <input type="text" id="searchInput" placeholder="Search articles..." 
+                           class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 pl-12 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
+                           onkeyup="searchArticles()">
+                    <i class="fas fa-search absolute left-4 top-3.5 text-slate-500"></i>
+                </div>
+            </div>
+            
+            <!-- Category Filters -->
+            <div class="flex flex-wrap justify-center gap-3 mt-6" id="categoryFilters">
+                <button onclick="filterByCategory('all')" class="filter-btn active px-4 py-2 bg-accent text-primary font-semibold rounded-full text-sm transition-all border border-accent">
+                    All
+                </button>
+                <button onclick="filterByCategory('docker')" class="filter-btn px-4 py-2 bg-slate-800 text-slate-300 hover:text-white rounded-full text-sm transition-all border border-slate-700">
+                    <i class="fab fa-docker mr-1"></i> Docker
+                </button>
+                <button onclick="filterByCategory('kubernetes')" class="filter-btn px-4 py-2 bg-slate-800 text-slate-300 hover:text-white rounded-full text-sm transition-all border border-slate-700">
+                    <i class="fas fa-dharmachakra mr-1"></i> Kubernetes
+                </button>
+                <button onclick="filterByCategory('bugbounty')" class="filter-btn px-4 py-2 bg-slate-800 text-slate-300 hover:text-white rounded-full text-sm transition-all border border-slate-700">
+                    <i class="fas fa-bug mr-1"></i> Bug Bounty
+                </button>
+                <button onclick="filterByCategory('devsecops')" class="filter-btn px-4 py-2 bg-slate-800 text-slate-300 hover:text-white rounded-full text-sm transition-all border border-slate-700">
+                    <i class="fas fa-shield-alt mr-1"></i> DevSecOps
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Articles Grid -->
+    <main class="max-w-6xl mx-auto px-4 pb-20">
+        <div id="articlesContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Article 1: Docker Security -->
+            <article class="article-card bg-secondary rounded-2xl overflow-hidden border border-slate-700 flex flex-col" data-category="docker devsecops" data-title="docker security containers hardening">
+                <div class="h-48 bg-gradient-to-br from-cyan-900 to-slate-900 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-600/20 to-blue-900/80"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i class="fab fa-docker text-7xl text-cyan-400 opacity-40 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="absolute top-4 left-4 flex gap-2">
+                        <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded font-mono border border-cyan-500/30">DOCKER</span>
+                        <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded font-mono border border-emerald-500/30">DEVSECOPS</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
+                        <span><i class="far fa-calendar-alt mr-1"></i> Nov 23, 2025</span>
+                        <span>•</span>
+                        <span><i class="far fa-clock mr-1"></i> 15 min</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 hover:text-accent transition-colors">
+                        <a href="/docker-security/">Securing Docker Containers — Practical Hands-On Guide</a>
+                    </h2>
+                    <p class="text-slate-400 text-sm mb-4 flex-grow leading-relaxed">
+                        Production-grade techniques: non-root users, Docker Content Trust, Docker Scout scanning, capability limiting, and read-only filesystems.
+                    </p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-700">
+                        <div class="flex gap-2">
+                            <span class="text-xs text-slate-500">#security</span>
+                            <span class="text-xs text-slate-500">#hardening</span>
+                        </div>
+                        <a href="/docker-security/" class="text-accent hover:text-white font-semibold text-sm flex items-center gap-1 group">
+                            Read <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 2: Kubernetes -->
+            <article class="article-card bg-secondary rounded-2xl overflow-hidden border border-slate-700 flex flex-col" data-category="kubernetes devsecops" data-title="kubernetes security mistakes k8s">
+                <div class="h-48 bg-gradient-to-br from-blue-900 to-slate-900 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-slate-900/80"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-dharmachakra text-7xl text-blue-400 opacity-40 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="absolute top-4 left-4 flex gap-2">
+                        <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded font-mono border border-blue-500/30">KUBERNETES</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
+                        <span><i class="far fa-calendar-alt mr-1"></i> Jan 15, 2025</span>
+                        <span>•</span>
+                        <span><i class="far fa-clock mr-1"></i> 12 min</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 hover:text-accent transition-colors">
+                        <a href="#">Top 10 Kubernetes Security Mistakes</a>
+                    </h2>
+                    <p class="text-slate-400 text-sm mb-4 flex-grow leading-relaxed">
+                        Common K8s misconfigurations that lead to container escapes, privilege escalation, and cluster compromise.
+                    </p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-700">
+                        <div class="flex gap-2">
+                            <span class="text-xs text-slate-500">#k8s</span>
+                            <span class="text-xs text-slate-500">#cloud</span>
+                        </div>
+                        <a href="#" class="text-accent hover:text-white font-semibold text-sm flex items-center gap-1 group">
+                            Read <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 3: Bug Bounty -->
+            <article class="article-card bg-secondary rounded-2xl overflow-hidden border border-slate-700 flex flex-col" data-category="bugbounty" data-title="bug bounty reconnaissance automation">
+                <div class="h-48 bg-gradient-to-br from-red-900 to-slate-900 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-600/20 to-slate-900/80"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-bug text-7xl text-red-400 opacity-40 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="absolute top-4 left-4 flex gap-2">
+                        <span class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded font-mono border border-red-500/30">BUG BOUNTY</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
+                        <span><i class="far fa-calendar-alt mr-1"></i> Jan 20, 2025</span>
+                        <span>•</span>
+                        <span><i class="far fa-clock mr-1"></i> 10 min</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 hover:text-accent transition-colors">
+                        <a href="#">Advanced Reconnaissance Techniques</a>
+                    </h2>
+                    <p class="text-slate-400 text-sm mb-4 flex-grow leading-relaxed">
+                        How I find hidden assets using Amass, Nuclei, and custom automation scripts. From subdomain enumeration to vulnerability discovery.
+                    </p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-700">
+                        <div class="flex gap-2">
+                            <span class="text-xs text-slate-500">#recon</span>
+                            <span class="text-xs text-slate-500">#automation</span>
+                        </div>
+                        <a href="#" class="text-accent hover:text-white font-semibold text-sm flex items-center gap-1 group">
+                            Read <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 4: DevSecOps -->
+            <article class="article-card bg-secondary rounded-2xl overflow-hidden border border-slate-700 flex flex-col" data-category="devsecops" data-title="devsecops ci/cd pipeline security">
+                <div class="h-48 bg-gradient-to-br from-emerald-900 to-slate-900 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-slate-900/80"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-7xl text-emerald-400 opacity-40 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="absolute top-4 left-4 flex gap-2">
+                        <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded font-mono border border-emerald-500/30">DEVSECOPS</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
+                        <span><i class="far fa-calendar-alt mr-1"></i> Feb 01, 2025</span>
+                        <span>•</span>
+                        <span><i class="far fa-clock mr-1"></i> 8 min</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 hover:text-accent transition-colors">
+                        <a href="#">Building Secure CI/CD Pipelines</a>
+                    </h2>
+                    <p class="text-slate-400 text-sm mb-4 flex-grow leading-relaxed">
+                        Integrating SAST, SCA, and DAST tools into your pipeline. SonarQube, Trivy, and OWASP ZAP automation guide.
+                    </p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-700">
+                        <div class="flex gap-2">
+                            <span class="text-xs text-slate-500">#cicd</span>
+                            <span class="text-xs text-slate-500">#automation</span>
+                        </div>
+                        <a href="#" class="text-accent hover:text-white font-semibold text-sm flex items-center gap-1 group">
+                            Read <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 5: Cloud Security -->
+            <article class="article-card bg-secondary rounded-2xl overflow-hidden border border-slate-700 flex flex-col" data-category="devsecops" data-title="aws cloud security iam">
+                <div class="h-48 bg-gradient-to-br from-orange-900 to-slate-900 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-600/20 to-slate-900/80"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-cloud text-7xl text-orange-400 opacity-40 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="absolute top-4 left-4 flex gap-2">
+                        <span class="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded font-mono border border-orange-500/30">CLOUD</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
+                        <span><i class="far fa-calendar-alt mr-1"></i> Feb 10, 2025</span>
+                        <span>•</span>
+                        <span><i class="far fa-clock mr-1"></i> 14 min</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 hover:text-accent transition-colors">
+                        <a href="#">AWS Security: IAM Deep Dive</a>
+                    </h2>
+                    <p class="text-slate-400 text-sm mb-4 flex-grow leading-relaxed">
+                        Privilege escalation techniques, IAM policy misconfigurations, and how to secure your AWS infrastructure.
+                    </p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-700">
+                        <div class="flex gap-2">
+                            <span class="text-xs text-slate-500">#aws</span>
+                            <span class="text-xs text-slate-500">#iam</span>
+                        </div>
+                        <a href="#" class="text-accent hover:text-white font-semibold text-sm flex items-center gap-1 group">
+                            Read <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 6: API Security -->
+            <article class="article-card bg-secondary rounded-2xl overflow-hidden border border-slate-700 flex flex-col" data-category="devsecops bugbounty" data-title="api security testing graphql">
+                <div class="h-48 bg-gradient-to-br from-purple-900 to-slate-900 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-slate-900/80"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-code text-7xl text-purple-400 opacity-40 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="absolute top-4 left-4 flex gap-2">
+                        <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded font-mono border border-purple-500/30">API</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
+                        <span><i class="far fa-calendar-alt mr-1"></i> Feb 20, 2025</span>
+                        <span>•</span>
+                        <span><i class="far fa-clock mr-1"></i> 11 min</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-3 hover:text-accent transition-colors">
+                        <a href="#">API Security Testing Guide</a>
+                    </h2>
+                    <p class="text-slate-400 text-sm mb-4 flex-grow leading-relaxed">
+                        Testing REST and GraphQL APIs for vulnerabilities. BOLA, BFLA, injection attacks and secure coding practices.
+                    </p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-700">
+                        <div class="flex gap-2">
+                            <span class="text-xs text-slate-500">#api</span>
+                            <span class="text-xs text-slate-500">#graphql</span>
+                        </div>
+                        <a href="#" class="text-accent hover:text-white font-semibold text-sm flex items-center gap-1 group">
+                            Read <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResults" class="hidden text-center py-20">
+            <i class="fas fa-search text-6xl text-slate-700 mb-4"></i>
+            <h3 class="text-xl font-bold text-white mb-2">No articles found</h3>
+            <p class="text-slate-500">Try adjusting your search or filters</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary border-t border-slate-800 py-8 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="font-mono text-lg font-bold text-white">&lt;Ashad /&gt;</span>
+                <span class="text-slate-500 text-sm ml-2">© 2025 All rights reserved.</span>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://github.com/ashhadali10" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/ashhadali10/" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="https://medium.com/@ashadali" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-medium text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Search functionality
+        function searchArticles() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const articles = document.querySelectorAll('#articlesContainer article');
+            let visibleCount = 0;
+
+            articles.forEach(article => {
+                const title = article.getAttribute('data-title').toLowerCase();
+                const category = article.getAttribute('data-category').toLowerCase();
+                const text = article.innerText.toLowerCase();
+                
+                if (title.includes(searchTerm) || category.includes(searchTerm) || text.includes(searchTerm)) {
+                    article.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+
+            // Show/hide no results message
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        // Category filter
+        function filterByCategory(category) {
+            const articles = document.querySelectorAll('#articlesContainer article');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update button styles
+            buttons.forEach(btn => {
+                if (btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent === 'All')) {
+                    btn.classList.remove('bg-slate-800', 'text-slate-300');
+                    btn.classList.add('bg-accent', 'text-primary');
+                } else {
+                    btn.classList.remove('bg-accent', 'text-primary');
+                    btn.classList.add('bg-slate-800', 'text-slate-300');
+                }
+            });
+
+            // Filter articles
+            let visibleCount = 0;
+            articles.forEach(article => {
+                const articleCategory = article.getAttribute('data-category');
+                
+                if (category === 'all' || articleCategory.includes(category)) {
+                    article.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+
+            // Show/hide no results
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
