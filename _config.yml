@@ -1,41 +1,42 @@
-# Jekyll Configuration
-title: Ashad Ali - Security Blog
-description: Technical articles on Application Security, DevSecOps, and Bug Bounty
-author: Ashad Ali
-email: ashhadali2019@gmail.com
+# _config.yml
+title: Ashad Ali | Security Engineer
+description: Application Security, DevSecOps, and Bug Bounty Hunting
+baseurl: ""  # Empty for user site (ashhadali10.github.io)
+url: "https://ashhadali10.github.io"
 
-# Theme (Choose one from supported list)
-theme: jekyll-theme-minimal
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
 
-# Or use remote theme for better options:
-# remote_theme: pages-themes/cayman@v0.2.0
+# Include _pages folder
+include:
+  - _pages
 
-# Plugins
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Plugins (GitHub Pages supported)
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-paginate
 
-# Pagination
-paginate: 5
-paginate_path: "/blog/page:num/"
-
-# Markdown settings
-markdown: kramdown
-highlighter: rouge
-
-# URL
-baseurl: ""
-url: "https://ashhadali10.github.io"
-permalink: /:title/
-include:
-  - _pages
-
+# Default settings
 defaults:
   - scope:
-      path: "_pages"
+      path: ""
       type: "pages"
     values:
-      layout: default
-      permalink: /:basename/
+      layout: "default"
