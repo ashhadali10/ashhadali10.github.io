@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashhad - Cyber Security Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #667eea;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+        
+        .social-links a:hover {
+            color: #764ba2;
+        }
+        
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .project-card {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .project-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .cert-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .blog-post {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        
+        .blog-post:last-child {
+            border-bottom: none;
+        }
+        
+        .date {
+            color: #999;
+            font-size: 0.9em;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #764ba2;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img">
+            <h1>Ashhad</h1>
+            <p class="tagline">Cyber Security Specialist | Bug Bounty Hunter | CKA Aspirant</p>
+            <div class="social-links">
+                <a href="https://github.com/ashhad" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/ashhad" target="_blank">LinkedIn</a>
+                <a href="https://twitter.com/ashhad" target="_blank">Twitter</a>
+                <a href="mailto:ashhad@example.com">Email</a>
+            </div>
+        </header>
+
+        <!-- Resume Section -->
+        <section id="resume">
+            <h2>📄 Resume</h2>
+            <p>Download my complete resume:</p>
+            <a href="resume.pdf" class="btn" download>Download Resume (PDF)</a>
+            
+            <h3 style="margin-top: 20px;">Quick Overview</h3>
+            <ul>
+                <li>🎯 Bug Bounty Hunter - HackerOne, Bugcrowd</li>
+                <li>☸️ Kubernetes Administrator - CKA Preparing</li>
+                <li>🔒 Web Application Security Specialist</li>
+                <li>🐍 Python Automation & Scripting</li>
+            </ul>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>🚀 Projects</h2>
+            
+            <div class="project-card">
+                <h3>Nuclei Custom Templates</h3>
+                <p>Created 50+ custom Nuclei templates for bug bounty automation. Targeted Kubernetes, Blockchain, and API vulnerabilities.</p>
+                <p><strong>Tech:</strong> YAML, Go, Security Research</p>
+                <a href="https://github.com/ashhad/nuclei-templates" class="btn">View Project</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Kubernetes Security Scanner</h3>
+                <p>Automated security scanning tool for Kubernetes clusters. Checks for misconfigurations, RBAC issues, and network policies.</p>
+                <p><strong>Tech:</strong> Python, Kubernetes API, kubectl</p>
+                <a href="https://github.com/ashhad/k8s-security-scanner" class="btn">View Project</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Bug Bounty Automation</h3>
+                <p>Complete automation pipeline for reconnaissance, vulnerability scanning, and reporting.</p>
+                <p><strong>Tech:</strong> Bash, Python, Nuclei, Subfinder</p>
+                <a href="https://github.com/ashhad/bb-automation" class="btn">View Project</a>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2>🏆 Certifications</h2>
+            
+            <div class="cert-badge">CEH - Certified Ethical Hacker</div>
+            <div class="cert-badge">eJPT - Junior Penetration Tester</div>
+            <div class="cert-badge">CKA - Kubernetes Administrator (Preparing)</div>
+            <div class="cert-badge">AWS Cloud Practitioner</div>
+            <div class="cert-badge">CompTIA Security+</div>
+            
+            <h3 style="margin-top: 20px;">In Progress</h3>
+            <ul>
+                <li>CKA - Certified Kubernetes Administrator</li>
+                <li>OSCP - Offensive Security Certified Professional</li>
+            </ul>
+        </section>
+
+        <!-- Work Experience -->
+        <section id="experience">
+            <h2>💼 Work Experience</h2>
+            
+            <div class="blog-post">
+                <h3>Security Researcher - Freelance</h3>
+                <p class="date">2023 - Present</p>
+                <p>Bug bounty hunting on HackerOne and Bugcrowd. Found 50+ valid vulnerabilities including critical severity bugs.</p>
+            </div>
+            
+            <div class="blog-post">
+                <h3>DevOps Intern - Tech Solutions Inc</h3>
+                <p class="date">2022 - 2023</p>
+                <p>Managed Kubernetes clusters, implemented CI/CD pipelines, and conducted security audits.</p>
+            </div>
+        </section>
+
+        <!-- Blogs Section -->
+        <section id="blogs">
+            <h2>📝 Blogs & Writeups</h2>
+            
+            <div class="blog-post">
+                <h3><a href="#">Kubernetes Security: Common Misconfigurations</a></h3>
+                <p class="date">March 2024</p>
+                <p>Deep dive into Kubernetes security issues found during CKA preparation and bug bounty hunting.</p>
+            </div>
+            
+            <div class="blog-post">
+                <h3><a href="#">Nuclei Template Development Guide</a></h3>
+                <p class="date">February 2024</p>
+                <p>Complete guide to creating effective Nuclei templates for API and infrastructure testing.</p>
+            </div>
+            
+            <div class="blog-post">
+                <h3><a href="#">From Zero to Bug Bounty: My Journey</a></h3>
+                <p class="date">January 2024</p>
+                <p>Personal story of getting started in cybersecurity and landing first valid bugs.</p>
+            </div>
+            
+            <a href="https://medium.com/@ashhad" class="btn">Read More on Medium</a>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2>📧 Contact</h2>
+            <p>Interested in collaboration or have a security question?</p>
+            <ul>
+                <li>Email: ashhad@example.com</li>
+                <li>LinkedIn: linkedin.com/in/ashhad</li>
+                <li>Twitter: @ashhad</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Ashhad. Built with ❤️ on GitHub Pages</p>
+        </footer>
+    </div>
+</body>
+</html>
