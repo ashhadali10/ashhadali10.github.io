@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ashad Ali - Application Security Engineer & DevSecOps Specialist. Securing the digital frontier.">
+    <title>Ashad Ali | Application Security Engineer & DevSecOps Expert</title>
+    <meta name="description" content="Ashad Ali is a cybersecurity professional specializing in Application Security, VAPT, DevSecOps, and Cloud Security. Read technical blogs on Kubernetes security and bug bounty hunting.">
+    <meta name="keywords" content="Ashad Ali, Application Security, DevSecOps, Cybersecurity, Bug Bounty, VAPT, Kubernetes Security, Penetration Testing, Pakistan">
     <meta name="author" content="Ashad Ali">
-    <meta name="theme-color" content="#020617">
-    <title>Ashad Ali | Security Engineer & DevSecOps</title>
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS (CDN for Portability) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Icons -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind Config -->
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -30,21 +30,26 @@
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        bg: '#020617',
-                        surface: '#0f172a',
-                        primary: '#22d3ee',
-                        secondary: '#34d399',
-                        accent: '#818cf8',
+                        primary: '#0f172a', // Slate 900
+                        secondary: '#1e293b', // Slate 800
+                        accent: '#22d3ee', // Cyan 400
+                        success: '#34d399', // Emerald 400
+                        danger: '#f87171', // Red 400
                     },
                     animation: {
-                        'spin-slow': 'spin 12s linear infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -54,198 +59,202 @@
 
     <style>
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
-
-        /* Custom Cursor */
-        .cursor-dot, .cursor-outline {
-            position: fixed;
-            top: 0; left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .cursor-dot { width: 8px; height: 8px; background-color: #22d3ee; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(34, 211, 238, 0.5); transition: width 0.2s, height 0.2s; }
-        
-        /* Glassmorphism */
-        .glass {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
         }
 
         /* Gradient Text */
         .text-gradient {
-            background: linear-gradient(135deg, #22d3ee 0%, #34d399 100%);
+            background: linear-gradient(to right, #22d3ee, #34d399);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Grid Background */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        /* Glassmorphism */
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Utility */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* Typing Cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
         
-        /* Hide Cursor on Mobile */
-        @media (max-width: 768px) {
-            .cursor-dot, .cursor-outline { display: none; }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.3);
+            border-color: #22d3ee;
+        }
+
+        .blog-card:hover .blog-title {
+            color: #22d3ee;
         }
     </style>
 </head>
-<body class="bg-bg text-slate-300 font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-bg">
-
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
-    <!-- Background Canvas -->
-    <canvas id="network-canvas" class="fixed top-0 left-0 w-full h-full -z-10 opacity-40"></canvas>
+<body class="bg-primary text-slate-300 font-sans antialiased selection:bg-accent selection:text-primary overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="#" class="font-mono text-2xl font-bold text-white tracking-tighter hover:text-primary transition-colors">
-                    &lt;Ashad /&gt;
-                </a>
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="font-mono text-xl font-bold text-white tracking-tighter">&lt;Ashad /&gt;</span>
+                </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#about" class="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                        <a href="#skills" class="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
-                        <a href="#experience" class="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
-                        <a href="#projects" class="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
-                        <a href="#contact" class="bg-primary/10 text-primary border border-primary/50 hover:bg-primary hover:text-bg px-5 py-2 rounded-full text-sm font-bold transition-all">Contact Me</a>
+                        <a href="#about" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="#skills" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                        <a href="#experience" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+                        <a href="#blog" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Blog</a>
+                        <a href="#projects" class="hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        <a href="#contact" class="bg-accent text-primary hover:bg-cyan-300 px-4 py-2 rounded-md text-sm font-bold transition-colors">Contact Me</a>
                     </div>
                 </div>
-                <!-- Mobile Menu Button -->
+                <!-- Mobile menu button -->
                 <div class="-mr-2 flex md:hidden">
-                    <button type="button" onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="hidden md:hidden glass border-t border-gray-800" id="mobile-menu">
+        <div class="hidden md:hidden glass border-t border-gray-700" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" onclick="toggleMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#skills" onclick="toggleMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
-                <a href="#experience" onclick="toggleMenu()" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Experience</a>
-                <a href="#contact" onclick="toggleMenu()" class="text-primary block px-3 py-2 rounded-md text-base font-bold">Contact</a>
+                <a href="#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#experience" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#blog" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="#contact" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 text-center md:text-left z-10 reveal">
-                <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 text-xs font-mono font-semibold tracking-wider text-primary bg-primary/5 rounded-full border border-primary/20">
-                    <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-                    Available for Opportunities
+            <div class="md:w-1/2 text-center md:text-left z-10" data-aos="fade-right">
+                <div class="inline-block px-3 py-1 mb-4 text-xs font-mono font-semibold tracking-wider text-accent uppercase bg-slate-800 rounded-full border border-slate-700">
+                    Open for Opportunities
                 </div>
-                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
-                    Hi, I'm <br>
-                    <span class="text-gradient">Ashad Ali</span>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+                    Hi, I'm <span class="text-gradient">Ashad Ali</span>
                 </h1>
-                <div class="h-10 mb-8">
-                    <span id="typing-text" class="text-xl md:text-2xl font-mono text-slate-400"></span>
+                <div class="h-8 md:h-10 mb-6">
+                    <span id="typing-text" class="text-xl md:text-2xl font-mono text-slate-400 typing-cursor"></span>
                 </div>
-                <p class="text-lg text-slate-400 mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
-                    Securing the digital frontier through <span class="text-white font-semibold">Application Security</span>, 
-                    <span class="text-white font-semibold">DevSecOps</span>, and 
-                    <span class="text-white font-semibold">Cloud Architecture</span>.
+                <p class="text-lg text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    Securing the digital frontier through <span class="text-white font-semibold">Application Security</span>, <span class="text-white font-semibold">DevSecOps</span>, and <span class="text-white font-semibold">Cloud Architecture</span>. 
+                    Specialized in breaking and building resilient systems.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="#contact" class="group px-8 py-4 bg-primary text-bg font-bold rounded-lg hover:bg-cyan-300 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] flex items-center justify-center gap-2">
-                        Hire Me <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    <a href="#contact" class="px-8 py-3 bg-accent text-primary font-bold rounded-lg hover:bg-cyan-300 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]">
+                        Hire Me <i class="fas fa-paper-plane ml-2"></i>
                     </a>
-                    <a href="resume.pdf" download class="px-8 py-4 border border-slate-700 text-white font-semibold rounded-lg hover:bg-surface transition-all flex items-center justify-center gap-2 glass">
-                        <i class="fas fa-download"></i> Resume
+                    <!-- UPDATED RESUME LINK -->
+                    <a href="Ashad_Ali_Security_Engineer.pdf" download class="px-8 py-3 border border-slate-600 text-white font-semibold rounded-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-download"></i> Download Resume
                     </a>
                 </div>
                 
                 <!-- Social Proof -->
-                <div class="mt-12 flex items-center gap-6 justify-center md:justify-start text-slate-500">
-                    <a href="https://www.linkedin.com/in/ashhadali10/" target="_blank" class="hover:text-primary transition-colors text-2xl transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/ashhadali10" target="_blank" class="hover:text-primary transition-colors text-2xl transform hover:scale-110"><i class="fab fa-github"></i></a>
-                    <a href="https://x.com/Kashhad10" target="_blank" class="hover:text-primary transition-colors text-2xl transform hover:scale-110"><i class="fab fa-twitter"></i></a>
+                <div class="mt-10 flex items-center gap-6 justify-center md:justify-start text-slate-500">
+                    <a href="https://www.linkedin.com/in/ashhadali10/" target="_blank" class="hover:text-white transition-colors text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ashhadali10" target="_blank" class="hover:text-white transition-colors text-2xl"><i class="fab fa-github"></i></a>
+                    <a href="https://medium.com/@ashadali" target="_blank" class="hover:text-white transition-colors text-2xl"><i class="fab fa-medium"></i></a>
+                    <a href="https://x.com/Kashhad10" target="_blank" class="hover:text-white transition-colors text-2xl"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             
-            <!-- Hero Visual -->
-            <div class="md:w-1/2 mt-12 md:mt-0 relative z-10 flex justify-center reveal" data-delay="200">
-                <div class="relative w-72 h-72 md:w-96 md:h-96">
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
-                    <div class="relative w-full h-full rounded-full border border-slate-800 bg-surface overflow-hidden shadow-2xl animate-float">
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Security Abstract" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500">
-                        <!-- Floating Badges -->
-                        <div class="absolute top-4 right-4 glass p-3 rounded-lg animate-float" style="animation-delay: 1s;">
-                            <i class="fas fa-shield-alt text-secondary text-xl"></i>
-                        </div>
-                        <div class="absolute bottom-10 left-4 glass p-3 rounded-lg animate-float" style="animation-delay: 2s;">
-                            <i class="fas fa-code text-primary text-xl"></i>
-                        </div>
+            <div class="md:w-1/2 mt-12 md:mt-0 relative z-10 flex justify-center" data-aos="fade-left">
+                <div class="relative w-64 h-64 md:w-96 md:h-96">
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent to-success rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Cyber Security Abstract" 
+                         class="relative rounded-full w-full h-full object-cover border-4 border-slate-800 shadow-2xl grayscale hover:grayscale-0 transition-all duration-500">
+                    
+                    <!-- Floating Badges -->
+                    <div class="absolute -top-4 -right-4 bg-secondary p-3 rounded-lg shadow-lg border border-slate-700 animate-bounce" style="animation-duration: 3s;">
+                        <i class="fas fa-shield-alt text-success text-2xl"></i>
+                    </div>
+                    <div class="absolute bottom-10 -left-8 bg-secondary p-3 rounded-lg shadow-lg border border-slate-700 animate-bounce" style="animation-duration: 4s;">
+                        <i class="fas fa-bug text-danger text-2xl"></i>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-slate-500 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-surface relative border-t border-slate-800">
+    <section id="about" class="py-20 bg-secondary relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About Me</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                <div class="w-20 h-1 bg-accent mx-auto rounded-full"></div>
             </div>
+
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6 text-lg text-slate-300 leading-relaxed reveal">
+                <div class="space-y-6 text-lg text-slate-300 leading-relaxed" data-aos="fade-right">
                     <p>
-                        I am a cybersecurity professional specializing in <strong class="text-white">Application Security (AppSec)</strong>, 
-                        <strong class="text-white">VAPT</strong>, and <strong class="text-white">Cloud Security</strong>.
+                        I am a cybersecurity professional specializing in <strong class="text-white">Application Security (AppSec)</strong>, <strong class="text-white">Vulnerability Assessment & Penetration Testing (VAPT)</strong>, and <strong class="text-white">Cloud Security</strong>. 
                     </p>
                     <p>
-                        Currently at <span class="text-primary font-semibold">Bank AL Habib Limited</span>, performing deep-dive security testing 
-                        across Web, Mobile, and API applications.
+                        Currently, I work at <span class="text-accent font-semibold">Bank AL Habib Limited</span>, where I perform deep-dive security testing across Web, Mobile, and API applications. I focus on identifying real-world vulnerabilities, improving secure coding practices, and building automated defenses into the software development lifecycle.
                     </p>
-                    <div class="p-4 bg-bg rounded-lg border border-slate-800 font-mono text-sm text-secondary">
-                        > Status: Building secure systems...<br>
-                        > Location: Karachi, PK<br>
-                        > Focus: DevSecOps & Automation
-                    </div>
+                    <p>
+                        I actively work across <span class="text-success font-semibold">DevSecOps</span>, integrating SAST, SCA, and DAST (SonarQube, Trivy, ZAP) into CI/CD pipelines to help engineering teams build secure products.
+                    </p>
                 </div>
-                <div class="grid grid-cols-2 gap-4 reveal">
-                    <div class="glass p-6 rounded-xl border border-slate-700 hover:border-primary transition-colors group">
-                        <i class="fas fa-code text-primary text-3xl mb-3 group-hover:scale-110 transition-transform"></i>
+                
+                <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+                    <div class="bg-primary p-6 rounded-xl border border-slate-700 hover:border-accent transition-colors">
+                        <i class="fas fa-code text-accent text-3xl mb-3"></i>
                         <h3 class="text-white font-bold text-lg">Secure Coding</h3>
-                        <p class="text-sm text-slate-400 mt-2">Node.js, PHP, Angular</p>
+                        <p class="text-sm text-slate-400 mt-2">Node.js, PHP, Angular Reviews</p>
                     </div>
-                    <div class="glass p-6 rounded-xl border border-slate-700 hover:border-secondary transition-colors group">
-                        <i class="fas fa-cloud text-secondary text-3xl mb-3 group-hover:scale-110 transition-transform"></i>
+                    <div class="bg-primary p-6 rounded-xl border border-slate-700 hover:border-accent transition-colors">
+                        <i class="fas fa-cloud text-success text-3xl mb-3"></i>
                         <h3 class="text-white font-bold text-lg">Cloud Security</h3>
-                        <p class="text-sm text-slate-400 mt-2">AWS, Kubernetes</p>
+                        <p class="text-sm text-slate-400 mt-2">AWS, Kubernetes, Containers</p>
                     </div>
-                    <div class="glass p-6 rounded-xl border border-slate-700 hover:border-accent transition-colors group">
-                        <i class="fas fa-robot text-accent text-3xl mb-3 group-hover:scale-110 transition-transform"></i>
+                    <div class="bg-primary p-6 rounded-xl border border-slate-700 hover:border-accent transition-colors">
+                        <i class="fas fa-terminal text-danger text-3xl mb-3"></i>
                         <h3 class="text-white font-bold text-lg">Automation</h3>
-                        <p class="text-sm text-slate-400 mt-2">Python, CI/CD</p>
+                        <p class="text-sm text-slate-400 mt-2">Python, Bash, CI/CD Pipelines</p>
                     </div>
-                    <div class="glass p-6 rounded-xl border border-slate-700 hover:text-primary transition-colors group">
-                        <i class="fas fa-mobile-alt text-purple-400 text-3xl mb-3 group-hover:scale-110 transition-transform"></i>
+                    <div class="bg-primary p-6 rounded-xl border border-slate-700 hover:border-accent transition-colors">
+                        <i class="fas fa-mobile-alt text-purple-400 text-3xl mb-3"></i>
                         <h3 class="text-white font-bold text-lg">Mobile Sec</h3>
-                        <p class="text-sm text-slate-400 mt-2">iOS & Android</p>
+                        <p class="text-sm text-slate-400 mt-2">iOS & Android, SSL Pinning</p>
                     </div>
                 </div>
             </div>
@@ -253,312 +262,526 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-24 bg-bg relative">
+    <section id="skills" class="py-20 bg-primary">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Technical Arsenal</h2>
                 <p class="text-slate-400">Tools and technologies I use to secure applications</p>
+                <div class="w-20 h-1 bg-accent mx-auto rounded-full mt-4"></div>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Skill Card 1 -->
-                <div class="glass p-8 rounded-2xl border border-slate-800 hover:border-primary transition-all duration-300 reveal">
+                <!-- Category 1: Security Testing -->
+                <div class="bg-secondary rounded-2xl p-8 border border-slate-700 hover:border-accent transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 rounded-lg bg-slate-900 flex items-center justify-center mr-4 border border-slate-700">
-                            <i class="fas fa-bug text-red-400 text-xl"></i>
+                        <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center mr-4">
+                            <i class="fas fa-bug text-danger text-xl"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white">Security Testing</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">Burp Suite</span>
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">OWASP ZAP</span>
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">Nuclei</span>
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">Metasploit</span>
-                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-success mr-2 text-xs"></i> Burp Suite Pro</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-success mr-2 text-xs"></i> OWASP ZAP</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-success mr-2 text-xs"></i> Nuclei</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-success mr-2 text-xs"></i> Metasploit</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-success mr-2 text-xs"></i> Nessus</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-success mr-2 text-xs"></i> SQLmap</li>
+                    </ul>
                 </div>
-                <!-- Skill Card 2 -->
-                <div class="glass p-8 rounded-2xl border border-slate-800 hover:border-primary transition-all duration-300 reveal" style="transition-delay: 100ms;">
+
+                <!-- Category 2: DevSecOps & Cloud -->
+                <div class="bg-secondary rounded-2xl p-8 border border-slate-700 hover:border-accent transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 rounded-lg bg-slate-900 flex items-center justify-center mr-4 border border-slate-700">
-                            <i class="fas fa-cloud text-primary text-xl"></i>
+                        <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center mr-4">
+                            <i class="fas fa-cloud text-accent text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white">DevSecOps</h3>
+                        <h3 class="text-xl font-bold text-white">DevSecOps & Cloud</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">AWS</span>
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">Kubernetes</span>
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">Docker</span>
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">GitHub Actions</span>
-                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-accent mr-2 text-xs"></i> AWS (IAM, Lambda, S3)</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-accent mr-2 text-xs"></i> Kubernetes (CKA Prep)</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-accent mr-2 text-xs"></i> Docker & Containers</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-accent mr-2 text-xs"></i> SonarQube (SAST)</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-accent mr-2 text-xs"></i> Trivy (SCA)</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-accent mr-2 text-xs"></i> GitHub/GitLab CI/CD</li>
+                    </ul>
                 </div>
-                <!-- Skill Card 3 -->
-                <div class="glass p-8 rounded-2xl border border-slate-800 hover:border-primary transition-all duration-300 reveal" style="transition-delay: 200ms;">
+
+                <!-- Category 3: Development & AI -->
+                <div class="bg-secondary rounded-2xl p-8 border border-slate-700 hover:border-accent transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 rounded-lg bg-slate-900 flex items-center justify-center mr-4 border border-slate-700">
+                        <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center mr-4">
                             <i class="fas fa-code text-purple-400 text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Development</h3>
+                        <h3 class="text-xl font-bold text-white">Development & AI</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">Python</span>
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">Node.js</span>
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">Bash</span>
-                        <span class="px-3 py-1 bg-slate-900 text-slate-300 text-xs rounded-full border border-slate-700">AI/ML</span>
-                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-purple-400 mr-2 text-xs"></i> Python (Automation)</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-purple-400 mr-2 text-xs"></i> Bash Scripting</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-purple-400 mr-2 text-xs"></i> TensorFlow / PyTorch</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-purple-400 mr-2 text-xs"></i> LangChain</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-purple-400 mr-2 text-xs"></i> Node.js & PHP</li>
+                        <li class="flex items-center text-slate-300"><i class="fas fa-check text-purple-400 mr-2 text-xs"></i> MITRE ATT&CK</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-24 bg-surface border-t border-slate-800">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
+    <section id="experience" class="py-20 bg-secondary">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Work Experience</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                <div class="w-20 h-1 bg-accent mx-auto rounded-full"></div>
             </div>
-            <div class="relative border-l-2 border-slate-800 ml-3 md:ml-6 space-y-12">
+
+            <div class="relative border-l-2 border-slate-700 ml-3 md:ml-6 space-y-12">
+                
                 <!-- Job 1 -->
-                <div class="relative pl-8 md:pl-12 reveal">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-surface shadow-[0_0_10px_#22d3ee]"></div>
+                <div class="relative pl-8 md:pl-12" data-aos="fade-up">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-accent border-4 border-secondary"></div>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                         <h3 class="text-xl font-bold text-white">Application Security Analyst</h3>
-                        <span class="text-xs font-mono text-primary bg-primary/10 px-3 py-1 rounded-full mt-2 sm:mt-0 border border-primary/20">Nov 2024 - Present</span>
+                        <span class="text-sm font-mono text-accent bg-slate-800 px-3 py-1 rounded-full mt-2 sm:mt-0">Nov 2024 - Present</span>
                     </div>
-                    <h4 class="text-lg text-slate-400 mb-4">Bank AL Habib Limited</h4>
-                    <ul class="space-y-2 text-slate-300 list-disc list-inside text-sm">
-                        <li>Conducting Web, Mobile, and API penetration testing.</li>
-                        <li>Implementing SAST, SCA, and DAST automation in CI/CD.</li>
-                        <li>Reviewing AWS & Kubernetes security posture.</li>
+                    <h4 class="text-lg text-slate-400 mb-4">Bank AL Habib Limited, Karachi</h4>
+                    <ul class="space-y-2 text-slate-300 list-disc list-inside">
+                        <li>Conducting Web, Mobile, and API penetration testing; identified <span class="text-success font-semibold">100+ vulnerabilities</span> (SQLi, CSRF, IDOR, SSRF, XXE).</li>
+                        <li>Performing secure code reviews for Node.js, PHP, and Angular applications.</li>
+                        <li>Implementing SAST, SCA, and DAST automation in CI/CD using SonarQube, Trivy, and OWASP ZAP.</li>
+                        <li>Reviewing AWS & Kubernetes security posture, focusing on IAM misconfigurations and workload hardening.</li>
+                        <li>Building threat models using MITRE ATT&CK Navigator for banking applications.</li>
                     </ul>
                 </div>
+
                 <!-- Job 2 -->
-                <div class="relative pl-8 md:pl-12 reveal">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-secondary border-4 border-surface"></div>
+                <div class="relative pl-8 md:pl-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-success border-4 border-secondary"></div>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                         <h3 class="text-xl font-bold text-white">VAPT Analyst</h3>
-                        <span class="text-xs font-mono text-secondary bg-secondary/10 px-3 py-1 rounded-full mt-2 sm:mt-0 border border-secondary/20">Oct 2023 - Nov 2024</span>
+                        <span class="text-sm font-mono text-success bg-slate-800 px-3 py-1 rounded-full mt-2 sm:mt-0">Oct 2023 - Nov 2024</span>
                     </div>
-                    <h4 class="text-lg text-slate-400 mb-4">CareCloud</h4>
-                    <ul class="space-y-2 text-slate-300 list-disc list-inside text-sm">
-                        <li>Performed end-to-end VAPT across Web, API, Network.</li>
-                        <li>Identified and assisted in remediating 50+ vulnerabilities.</li>
-                        <li>Built automation scripts using Python.</li>
+                    <h4 class="text-lg text-slate-400 mb-4">CareCloud, Karachi</h4>
+                    <ul class="space-y-2 text-slate-300 list-disc list-inside">
+                        <li>Performed end-to-end VAPT across Web, API, Network, and Mobile environments.</li>
+                        <li>Identified and assisted in remediating <span class="text-success font-semibold">50+ vulnerabilities</span> (SQLi, IDOR, Broken Auth).</li>
+                        <li>Conducted secure code reviews for Node.js, Angular, and PHP stacks.</li>
+                        <li>Built automation scripts using Python to streamline recon, scanning, and reporting.</li>
                     </ul>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="relative pl-8 md:pl-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-purple-400 border-4 border-secondary"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-white">Penetration Tester</h3>
+                        <span class="text-sm font-mono text-purple-400 bg-slate-800 px-3 py-1 rounded-full mt-2 sm:mt-0">Feb 2022 - Feb 2023</span>
+                    </div>
+                    <h4 class="text-lg text-slate-400 mb-4">Al Nafi Cloud, Canada (Remote)</h4>
+                    <ul class="space-y-2 text-slate-300 list-disc list-inside">
+                        <li>Conducted penetration testing across Web, API, Mobile, Network, OS, and Cloud (AWS/Azure).</li>
+                        <li>Performed cloud adversary simulations: IAM enumeration, privilege escalation, SSRF → Metadata extraction.</li>
+                        <li>Exploited Kubernetes & Docker environments, identifying RBAC misconfigurations.</li>
+                        <li>Created Zero Trust asset inventories using Nmap → Elasticsearch → Kibana.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION START -->
+    <section id="blog" class="py-20 bg-primary border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Security Blog</h2>
+                <p class="text-slate-400">Technical writeups on Bug Bounty, Kubernetes Security, and DevSecOps</p>
+                <div class="w-20 h-1 bg-accent mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <article class="blog-card bg-secondary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300 flex flex-col" data-aos="fade-up">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-900 to-slate-900 opacity-80"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-dharmachakra text-6xl text-blue-400 opacity-50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center gap-2 text-xs text-accent font-mono mb-3">
+                            <span>KUBERNETES</span>
+                            <span>•</span>
+                            <span>DEVSECOPS</span>
+                        </div>
+                        <h3 class="blog-title text-xl font-bold text-white mb-3 transition-colors">Kubernetes Security: 10 Common Misconfigurations</h3>
+                        <p class="text-slate-400 text-sm mb-4 flex-grow">
+                            A deep dive into RBAC misconfigurations, privileged containers, and network policy gaps that attackers exploit in K8s clusters.
+                        </p>
+                        <a href="https://medium.com/@ashadali" target="_blank" class="inline-flex items-center text-accent hover:text-white font-semibold text-sm mt-auto">
+                            Read on Medium <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card bg-secondary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-red-900 to-slate-900 opacity-80"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-bug text-6xl text-red-400 opacity-50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center gap-2 text-xs text-accent font-mono mb-3">
+                            <span>BUG BOUNTY</span>
+                            <span>•</span>
+                            <span>RECON</span>
+                        </div>
+                        <h3 class="blog-title text-xl font-bold text-white mb-3 transition-colors">From Zero to Hall of Fame: My Bug Bounty Journey</h3>
+                        <p class="text-slate-400 text-sm mb-4 flex-grow">
+                            How I earned Hall of Fame from Flywire, JetBrains, and others. Tips on reconnaissance, automation, and writing valid reports.
+                        </p>
+                        <a href="https://medium.com/@ashadali" target="_blank" class="inline-flex items-center text-accent hover:text-white font-semibold text-sm mt-auto">
+                            Read on Medium <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card bg-secondary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-slate-900 opacity-80"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-robot text-6xl text-green-400 opacity-50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex items-center gap-2 text-xs text-accent font-mono mb-3">
+                            <span>AUTOMATION</span>
+                            <span>•</span>
+                            <span>NUCLEI</span>
+                        </div>
+                        <h3 class="blog-title text-xl font-bold text-white mb-3 transition-colors">Building an AI-Powered Nuclei Template Engine</h3>
+                        <p class="text-slate-400 text-sm mb-4 flex-grow">
+                            Enhancing vulnerability scanning with AI-driven prioritization using LangChain and custom YAML templates for better signal-to-noise.
+                        </p>
+                        <a href="https://medium.com/@ashadali" target="_blank" class="inline-flex items-center text-accent hover:text-white font-semibold text-sm mt-auto">
+                            Read on Medium <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://medium.com/@ashadali" target="_blank" class="inline-block px-8 py-3 border border-accent text-accent font-bold rounded-lg hover:bg-accent hover:text-primary transition-all">
+                    View All Articles on Medium
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- BLOG SECTION END -->
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Projects</h2>
+                <div class="w-20 h-1 bg-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="group bg-primary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300" data-aos="fade-up">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-900 to-slate-900 opacity-80"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-robot text-6xl text-blue-400 opacity-50 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-accent transition-colors">AI-Powered Nuclei Engine</h3>
+                            <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-github text-xl"></i></a>
+                        </div>
+                        <p class="text-slate-400 mb-6">
+                            Enhanced Nuclei vulnerability scanning with AI-driven prioritization and reasoning. Improves signal-to-noise ratio by intelligently filtering false positives.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-800 text-accent text-xs rounded-full border border-slate-700">Python</span>
+                            <span class="px-3 py-1 bg-slate-800 text-accent text-xs rounded-full border border-slate-700">LangChain</span>
+                            <span class="px-3 py-1 bg-slate-800 text-accent text-xs rounded-full border border-slate-700">Nuclei</span>
+                            <span class="px-3 py-1 bg-slate-800 text-accent text-xs rounded-full border border-slate-700">AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group bg-primary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-900 to-slate-900 opacity-80"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-dharmachakra text-6xl text-cyan-400 opacity-50 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-accent transition-colors">ZAP Automation on K8s</h3>
+                            <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-github text-xl"></i></a>
+                        </div>
+                        <p class="text-slate-400 mb-6">
+                            Deployed a vulnerable application on Kubernetes and automated OWASP ZAP scans using Kubernetes CronJobs. Integrated security scanning directly into CI/CD workflows.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-800 text-accent text-xs rounded-full border border-slate-700">Kubernetes</span>
+                            <span class="px-3 py-1 bg-slate-800 text-accent text-xs rounded-full border border-slate-700">OWASP ZAP</span>
+                            <span class="px-3 py-1 bg-slate-800 text-accent text-xs rounded-full border border-slate-700">DevSecOps</span>
+                            <span class="px-3 py-1 bg-slate-800 text-accent text-xs rounded-full border border-slate-700">Docker</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-bg relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
-                <p class="text-slate-400">Open to security consulting and full-time roles</p>
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Hall of Fame & Achievements</h2>
+                <p class="text-slate-400">Recognized by international organizations for responsible disclosure</p>
+                <div class="w-20 h-1 bg-accent mx-auto rounded-full mt-4"></div>
             </div>
-            <div class="glass p-8 md:p-12 rounded-2xl border border-slate-800 reveal">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-slate-900 flex items-center justify-center text-primary border border-slate-800">
-                                <i class="fas fa-envelope text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-semibold">Email</h4>
-                                <a href="mailto:ashhadali2019@gmail.com" class="text-slate-400 hover:text-primary transition-colors text-sm">ashhadali2019@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-slate-900 flex items-center justify-center text-primary border border-slate-800">
-                                <i class="fab fa-linkedin text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-semibold">LinkedIn</h4>
-                                <a href="https://www.linkedin.com/in/ashhadali10/" target="_blank" class="text-slate-400 hover:text-primary transition-colors text-sm">linkedin.com/in/ashhadali10</a>
-                            </div>
-                        </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- HOF Items -->
+                <div class="bg-secondary p-6 rounded-xl border border-slate-700 text-center hover:border-success transition-all group" data-aos="zoom-in">
+                    <i class="fas fa-certificate text-4xl text-slate-600 group-hover:text-success mb-3 transition-colors"></i>
+                    <h4 class="text-white font-semibold">Flywire</h4>
+                    <p class="text-xs text-slate-500 mt-1">Hall of Fame</p>
+                </div>
+                <div class="bg-secondary p-6 rounded-xl border border-slate-700 text-center hover:border-success transition-all group" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-certificate text-4xl text-slate-600 group-hover:text-success mb-3 transition-colors"></i>
+                    <h4 class="text-white font-semibold">Essentia</h4>
+                    <p class="text-xs text-slate-500 mt-1">Hall of Fame</p>
+                </div>
+                <div class="bg-secondary p-6 rounded-xl border border-slate-700 text-center hover:border-success transition-all group" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-certificate text-4xl text-slate-600 group-hover:text-success mb-3 transition-colors"></i>
+                    <h4 class="text-white font-semibold">Pipefy</h4>
+                    <p class="text-xs text-slate-500 mt-1">Hall of Fame</p>
+                </div>
+                <div class="bg-secondary p-6 rounded-xl border border-slate-700 text-center hover:border-success transition-all group" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-certificate text-4xl text-slate-600 group-hover:text-success mb-3 transition-colors"></i>
+                    <h4 class="text-white font-semibold">Multiup</h4>
+                    <p class="text-xs text-slate-500 mt-1">Hall of Fame</p>
+                </div>
+                <div class="bg-secondary p-6 rounded-xl border border-slate-700 text-center hover:border-success transition-all group" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-certificate text-4xl text-slate-600 group-hover:text-success mb-3 transition-colors"></i>
+                    <h4 class="text-white font-semibold">JetBrains</h4>
+                    <p class="text-xs text-slate-500 mt-1">Hall of Fame</p>
+                </div>
+                <div class="bg-secondary p-6 rounded-xl border border-slate-700 text-center hover:border-success transition-all group" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fas fa-bug text-4xl text-slate-600 group-hover:text-danger mb-3 transition-colors"></i>
+                    <h4 class="text-white font-semibold">150+ Bugs</h4>
+                    <p class="text-xs text-slate-500 mt-1">Found & Fixed</p>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Independent Security Researcher</h3>
+                        <p class="text-slate-400">Active on HackerOne and Bugcrowd since August 2022</p>
                     </div>
-                    <div class="flex flex-col justify-center">
-                        <p class="text-slate-400 mb-6 text-sm">
-                            Ready to secure your infrastructure? Let's discuss how I can help your team build resilient systems.
-                        </p>
-                        <button onclick="copyEmail()" class="w-full bg-primary text-bg font-bold py-3 rounded-lg hover:bg-cyan-300 transition-colors flex items-center justify-center gap-2">
-                            <i class="fas fa-copy"></i> Copy Email Address
-                        </button>
+                    <div class="flex gap-8 text-center">
+                        <div>
+                            <div class="text-3xl font-bold text-accent">3+</div>
+                            <div class="text-sm text-slate-500">Years Experience</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-success">100+</div>
+                            <div class="text-sm text-slate-500">Valid Reports</div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Goals / Roadmap -->
+    <section class="py-20 bg-secondary border-t border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Future Roadmap</h2>
+                <p class="text-slate-400">Continuous learning and certification goals</p>
+                <div class="w-20 h-1 bg-accent mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Goal 1 -->
+                <div class="flex items-center gap-4 bg-primary p-4 rounded-lg border border-slate-700" data-aos="fade-right">
+                    <div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-dharmachakra text-blue-400"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="text-white font-bold">Certified Kubernetes Administrator (CKA)</h4>
+                        <p class="text-slate-400 text-sm">Mastering container orchestration security</p>
+                    </div>
+                    <span class="px-3 py-1 bg-blue-900 text-blue-300 text-xs rounded-full font-mono">IN PROGRESS</span>
+                </div>
+
+                <!-- Goal 2 -->
+                <div class="flex items-center gap-4 bg-primary p-4 rounded-lg border border-slate-700" data-aos="fade-right" data-aos-delay="100">
+                    <div class="w-12 h-12 rounded-full bg-red-900 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-skull text-red-400"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="text-white font-bold">OSCP - Offensive Security</h4>
+                        <p class="text-slate-400 text-sm">Advanced penetration testing certification</p>
+                    </div>
+                    <span class="px-3 py-1 bg-slate-700 text-slate-400 text-xs rounded-full font-mono">PLANNED</span>
+                </div>
+
+                <!-- Goal 3 -->
+                <div class="flex items-center gap-4 bg-primary p-4 rounded-lg border border-slate-700" data-aos="fade-right" data-aos-delay="200">
+                    <div class="w-12 h-12 rounded-full bg-purple-900 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-cloud text-purple-400"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="text-white font-bold">Cloud Security Specialist</h4>
+                        <p class="text-slate-400 text-sm">Deep dive into AWS/GCP security architecture</p>
+                    </div>
+                    <span class="px-3 py-1 bg-purple-900 text-purple-300 text-xs rounded-full font-mono">ONGOING</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - SIMPLIFIED (No Form Box) -->
+    <section id="contact" class="py-20 bg-primary relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-900/20 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
+                <p class="text-slate-400">Open to security consulting, full-time roles, and collaboration</p>
+                <div class="w-20 h-1 bg-accent mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 justify-center">
+                <!-- Email -->
+                <div class="bg-secondary p-8 rounded-2xl border border-slate-700 hover:border-accent transition-all" data-aos="fade-up">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-4 text-accent text-2xl">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2">Email Me</h4>
+                    <a href="mailto:ashhadali2019@gmail.com" class="text-slate-400 hover:text-accent transition-colors break-all">ashhadali2019@gmail.com</a>
+                </div>
+
+                <!-- LinkedIn -->
+                <div class="bg-secondary p-8 rounded-2xl border border-slate-700 hover:border-accent transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-4 text-accent text-2xl">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2">LinkedIn</h4>
+                    <a href="https://www.linkedin.com/in/ashhadali10/" target="_blank" class="text-slate-400 hover:text-accent transition-colors">Connect with me</a>
+                </div>
+
+                <!-- Twitter -->
+                <div class="bg-secondary p-8 rounded-2xl border border-slate-700 hover:border-accent transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-4 text-accent text-2xl">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2">Twitter / X</h4>
+                    <a href="https://x.com/Kashhad10" target="_blank" class="text-slate-400 hover:text-accent transition-colors">Follow @Kashhad10</a>
+                </div>
+            </div>
+            
+            <div class="mt-12" data-aos="fade-up">
+                 <a href="Ashad_Ali_Security_Engineer.pdf" download class="inline-flex items-center px-8 py-4 bg-accent text-primary font-bold rounded-lg hover:bg-cyan-300 transition-all shadow-lg hover:shadow-cyan-500/50">
+                    <i class="fas fa-download mr-3"></i> Download My Resume (PDF)
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-surface border-t border-slate-800 py-8">
+    <footer class="bg-secondary border-t border-slate-800 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
                 <span class="font-mono text-lg font-bold text-white">&lt;Ashad /&gt;</span>
-                <span class="text-slate-500 text-sm ml-2">© 2025</span>
+                <span class="text-slate-500 text-sm ml-2">© 2025 All rights reserved.</span>
             </div>
             <div class="flex space-x-6">
                 <a href="https://github.com/ashhadali10" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
                 <a href="https://www.linkedin.com/in/ashhadali10/" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="https://medium.com/@ashadali" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-medium text-xl"></i></a>
+                <a href="https://x.com/Kashhad10" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script>
-        // Custom Cursor
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+        // Initialize AOS Animation Library
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
         });
-
-        // Mobile Menu
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
 
         // Typing Effect
         const textElement = document.getElementById('typing-text');
-        const phrases = ['Application Security Engineer', 'DevSecOps Specialist', 'Bug Bounty Hunter', 'Cloud Security Expert'];
+        const phrases = [
+            'Application Security Engineer',
+            'DevSecOps Specialist', 
+            'Bug Bounty Hunter',
+            'Cloud Security Expert'
+        ];
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
+        let typeSpeed = 100;
 
         function type() {
             const currentPhrase = phrases[phraseIndex];
+            
             if (isDeleting) {
                 textElement.textContent = currentPhrase.substring(0, charIndex - 1);
                 charIndex--;
+                typeSpeed = 50;
             } else {
                 textElement.textContent = currentPhrase.substring(0, charIndex + 1);
                 charIndex++;
+                typeSpeed = 100;
             }
-            
+
             if (!isDeleting && charIndex === currentPhrase.length) {
                 isDeleting = true;
-                setTimeout(type, 2000);
+                typeSpeed = 2000; // Pause at end
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
-                setTimeout(type, 500);
-            } else {
-                setTimeout(type, isDeleting ? 50 : 100);
+                typeSpeed = 500; // Pause before typing
             }
+
+            setTimeout(type, typeSpeed);
         }
+
+        // Start typing effect
         document.addEventListener('DOMContentLoaded', type);
 
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // Copy Email
-        function copyEmail() {
-            navigator.clipboard.writeText('ashhadali2019@gmail.com');
-            alert('Email copied to clipboard!');
-        }
-
-        // Navbar Scroll Effect
+        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('glass', 'shadow-lg');
+                navbar.classList.add('shadow-lg');
+                navbar.classList.replace('bg-opacity-70', 'bg-opacity-95');
             } else {
-                navbar.classList.remove('glass', 'shadow-lg');
+                navbar.classList.remove('shadow-lg');
             }
         });
-
-        // Canvas Particle Network (Lightweight)
-        const canvas = document.getElementById('network-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let particlesArray;
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.speedX = (Math.random() * 1) - 0.5;
-                this.speedY = (Math.random() * 1) - 0.5;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
-                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
-            }
-            draw() {
-                ctx.fillStyle = '#22d3ee';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 15000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-                for (let j = i; j < particlesArray.length; j++) {
-                    const dx = particlesArray[i].x - particlesArray[j].x;
-                    const dy = particlesArray[i].y - particlesArray[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 100) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(34, 211, 238, ${1 - distance/100})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateParticles);
-        }
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initParticles();
-        });
-
-        initParticles();
-        animateParticles();
-
-        // Console Easter Egg
-        console.log("%c Welcome to Ashad's Portfolio ", "background: #22d3ee; color: #000; font-size: 20px; padding: 10px;");
-        console.log("%c Security Researcher | DevSecOps ", "color: #34d399; font-size: 14px;");
     </script>
 </body>
 </html>
